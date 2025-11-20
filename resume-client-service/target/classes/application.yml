@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: resume-client-service
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: resume-client-service
+    prefer-ip-address: true
+
+resume-ranker:
+  service:
+    url: http://resume-ranker-service:8000
+
+auth:
+  service:
+    url: http://auth-service:8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
